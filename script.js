@@ -43,7 +43,16 @@ function checkEmail(input) {
     return true;
 }
 
-// 校验单个输入框（空值 -> 必填提示；邮箱 -> 格式提示）
+// 两次密码一致性检查
+function checkPasswordsMatch(passwordInput, confirmInput) {
+    if (passwordInput.value !== confirmInput.value) {
+        showError(confirmInput, 'Passwords do not match');
+        return false;
+    }
+    return true;
+}
+
+// 校验单个输入框（空值 -> 必填提示；邮箱 -> 格式提示；确认密码 -> 一致性提示）
 function validateField(input) {
     if (!checkRequired(input)) {
         return false;
@@ -51,9 +60,30 @@ function validateField(input) {
     if (input === email && !checkEmail(input)) {
         return false;
     }
+    if (input === confirmPassword && !checkPasswordsMatch(password, confirmPassword)) {
+        return false;
+    }
     showSuccess(input);
     return true;
 }
+
+// 失焦时立即校验当前输入框；已报错的框在输入过程中实时重新校验
+const inputs = [username, email, password, confirmPassword];
+inputs.forEach(function (input) {
+    input.addEventListener('blur', function () {
+        validateField(input);
+    });
+    input.addEventListener('input', function () {
+        const formGroup = input.closest('.form-group');
+        if (formGroup.classList.contains('invalid')) {
+            validateField(input);
+        }
+        // 密码修改后，如果确认密码已填写，同步重新校验一致性
+        if (input === password && confirmPassword.value.trim() !== '') {
+            validateField(confirmPassword);
+        }
+    });
+});
 
 // 提交表单：阻止默认行为，逐项校验
 form.addEventListener('submit', function (event) {
