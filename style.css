@@ -107,36 +107,3 @@ input[type="password"]:focus {
 .btn:hover {
     background-color: #0069d9;
 }
-
-/* ========== 注册成功提示（初始隐藏，校验通过后显示） ========== */
-.success-message {
-    display: none;
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    border-radius: 6px;
-    padding: 12px 16px;
-    text-align: center;
-    font-weight: 600;
-    margin-bottom: 16px;
-}
-
-.success-message.show {
-    display: block;
-}
-
-/* ========== 密码可见切换的眼睛图标 ========== */
-.input-wrapper {
-    position: relative;
-}
-
-.toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    user-select: none;
-    font-size: 16px;
-    color: #666666;
-}

@@ -4,7 +4,6 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
-const successMessage = document.getElementById('success-message');
 
 // 邮箱格式正则
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -96,24 +95,11 @@ form.addEventListener('submit', function (event) {
     const isConfirmValid = validateField(confirmPassword);
 
     if (isUsernameValid && isEmailValid && isPasswordValid && isConfirmValid) {
-        // 注册成功：页面上方显示成功提示，并弹出提示框
-        successMessage.classList.add('show');
+        // 注册成功：弹出提示框并清空表单
         alert('Registration successful!');
         form.reset();
         inputs.forEach(function (input) {
             input.closest('.form-group').classList.remove('valid', 'invalid');
         });
-    } else {
-        successMessage.classList.remove('show');
     }
-});
-
-// 点击眼睛图标切换密码的显示/隐藏
-document.querySelectorAll('.toggle-password').forEach(function (toggle) {
-    toggle.addEventListener('click', function () {
-        const target = document.getElementById(toggle.dataset.target);
-        const isHidden = target.type === 'password';
-        target.type = isHidden ? 'text' : 'password';
-        toggle.textContent = isHidden ? '🙈' : '👁';
-    });
 });

@@ -10,8 +10,7 @@ Web 开发技术第一次课课后作业：注册页面的 HTML + CSS + JS 实�
 - 邮箱格式不正确时提示 `Invalid email format`
 - 两次密码不一致时提示 `Passwords do not match`
 - 校验通过的输入框显示绿色边框
-- 密码框支持点击眼睛图标显示/隐藏密码
-- 注册成功后页面上方显示 `Registration successful!` 并弹出提示框
+- 注册成功后弹出提示框 `Registration successful!` 并清空表单
 
 ## 项目结构
 
