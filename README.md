@@ -28,4 +28,4 @@ register-page/
 
 ## 在线访问
 
-部署地址：（Vercel 部署后更新）
+部署地址：<https://register-page-gules.vercel.app/>
